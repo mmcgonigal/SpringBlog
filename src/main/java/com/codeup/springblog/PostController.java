@@ -19,10 +19,14 @@ public class PostController {
         return "Current post number : " + id + " .";
     }
 
-    @RequestMapping(path = "/post/creat", method = RequestMethod.GET)
-    @ResponseBody String createForm(String form){
-return "lets great this ";
-    }
-
+//    @RequestMapping( "/posts/create")
+//    @ResponseBody String createForm(){
+//        return "inputForm";
+//    }
+//    @PostMapping("/posts/create")
+//   public String createForm(){
+//        return
+//    }
+//
 
 }
