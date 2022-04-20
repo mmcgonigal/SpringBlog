@@ -23,6 +23,7 @@ public class PostController {
     @GetMapping( "/posts/create")
     @ResponseBody String createPost(){
         return "inputForm Form for creating a post - pardon our dust ! ";
+
     }
 
 
