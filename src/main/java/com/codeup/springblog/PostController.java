@@ -15,18 +15,23 @@ public class PostController {
     }
 
     @RequestMapping (path="/posts/{id}", method=RequestMethod.GET)
-    @ResponseBody String  indivPost(@PathVariable int id){
+    @ResponseBody String  indivPostView(@PathVariable int id){
         return "Current post number : " + id + " .";
     }
 
-//    @RequestMapping( "/posts/create")
-//    @ResponseBody String createForm(){
-//        return "inputForm";
-//    }
-//    @PostMapping("/posts/create")
-//   public String createForm(){
-//        return
-//    }
-//
+
+    @GetMapping( "/posts/create")
+    @ResponseBody String createPost(){
+        return "inputForm Form for creating a post - pardon our dust ! ";
+    }
+
+
+    @PostMapping("/posts/create")
+   @ResponseBody
+    public String submit(){
+        return "creat a new post";
+    }
+
+
 
 }
