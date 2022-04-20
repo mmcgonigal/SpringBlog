@@ -4,9 +4,9 @@ package com.codeup.springblog;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@Controller // defines class is the controller
 public class HelloController {
-    @GetMapping("/hello")
+    @GetMapping("/hello") // get method ,---> this will be the landing page when it get method is invoked
     @ResponseBody
     public String hello(){
 
