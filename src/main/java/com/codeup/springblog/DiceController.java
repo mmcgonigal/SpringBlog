@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 public class DiceController {
     @GetMapping("/roll-dice/")
     public String sayHi(){
-        return"posts/rollDiceView";
+        return"rollDiceView";
     }
 
     @GetMapping("/roll-dice/{n}")
@@ -21,7 +21,7 @@ public class DiceController {
 
 
 
-            return"posts/rollDiceView";
+            return"rollDiceView";
     }
 
 
