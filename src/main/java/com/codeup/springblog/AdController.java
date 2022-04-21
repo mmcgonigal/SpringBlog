@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class AdController {
-    private final AdRepository adDao;
+    private final PostRepository adDao;
 
-    public AdController(AdRepository adDao){
+    public AdController(PostRepository adDao){
         this.adDao = adDao;
     }
 

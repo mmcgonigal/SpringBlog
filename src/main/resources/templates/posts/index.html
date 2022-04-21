@@ -10,6 +10,13 @@
 <body>
 <h1>Would you like to play a game? {user } </h1>
 <h1> Please Guess a number from dice</h1>
+
+<div th:each="post : ${posts}">
+    <p th:text="${post.title}" ></p>
+    <p th:text="${post.description}"></p>
+</div>
+<h2><a href="/posts/create">add post ?!</a></h2>
+
 <!--<a href="/doll-dice/1">1</a>-->
 <!--<a href="/doll-dice/2">2</a>-->
 <!--<a href="/doll-dice/3">3</a>-->

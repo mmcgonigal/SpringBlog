@@ -2,6 +2,7 @@ package com.codeup.springblog;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.PrintWriter;
@@ -9,10 +10,19 @@ import java.io.PrintWriter;
 @Controller
 public class PostController {
 
-    @GetMapping("/posts")
-    @ResponseBody String index(){
-        return "Hello. Hola, 안녕, Ni-hao";
+    private final PostRepository postDao;
+
+    public PostController(PostRepository postDao){
+        this.postDao = postDao;
     }
+
+    @GetMapping("/post")
+
+    public  String index (Model model) {
+        model.addAttribute("posts", postDao.findAll());
+        return "posts/index";
+    }
+
 
     @RequestMapping (path="/posts/{id}", method=RequestMethod.GET)
     @ResponseBody String  indivPostView(@PathVariable int id){
@@ -21,17 +31,25 @@ public class PostController {
 
 
     @GetMapping( "/posts/create")
-    @ResponseBody String createPost(){
-        return "inputForm Form for creating a post - pardon our dust ! ";
+    public  String submit(Model model){
 
+        model.addAttribute("post",new Post());
+
+        return "posts/create";
+        //when it is submited i need to
     }
 
 
     @PostMapping("/posts/create")
-   @ResponseBody
-    public String submit(){
-        return "creat a new post";
+    public String updatePost(@ModelAttribute Post post){
+  postDao.save(post);
+
+
+        return "redirect:/post";
     }
+
+
+
 
 
 

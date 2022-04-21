@@ -3,8 +3,8 @@ package com.codeup.springblog;
 import javax.persistence.*;
 
 @Entity
-@Table(name="spring_ads")
-public class Ad {
+//@Table(name="spring_ads")
+public class Post {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
@@ -16,6 +16,16 @@ public class Ad {
     @Column (nullable = false) // NOT NULL and no other customization.
     private String description;
 
+    public Post(long id, String title, String description) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+    }
+    public Post(String title, String description){
+        this.title =title;
+        this.description = description;
+    }
+public Post(){};
 
     public long getId() {
         return id;
