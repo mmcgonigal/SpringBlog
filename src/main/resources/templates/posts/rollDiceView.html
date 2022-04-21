@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dice roll game</title>
+</head>
+<body>
+first test : Can i see my path variable in my view?
+
+path var = <span th:text="${guessNumber}"></span>
+
+<br><br><br>
+<h1>Do you want to guess number ? </h1>
+<a href="/roll-dice/1">guess number 1</a><br>
+<a href="/roll-dice/2">guess number 2</a><br>
+<a href="/roll-dice/3">guess number 3</a><br>
+<a href="/roll-dice/4">guess number 4</a><br>
+<a href="/roll-dice/5">guess number 5</a><br>
+<a href="/roll-dice/6">guess number 6</a><br>
+<p> you just guessed  <span th:text="${guessNumber}"></span> and dice number is <span th:text="${actualNumber}"></span> .</p>
+
+
+
+
+
+
+</body>
+</html>

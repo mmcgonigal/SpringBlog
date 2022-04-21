@@ -5,9 +5,26 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-public class GameIntroController {
+public class DiceController {
+    @GetMapping("/roll-dice/")
+    public String sayHi(){
+        return"posts/rollDiceView";
+    }
 
-//
+    @GetMapping("/roll-dice/{n}")
+    public String guessNumber(Model model, @PathVariable int n){
+
+            model.addAttribute("guessNumber",n);
+
+            int randomNumber = (int)Math.floor(1+Math.random()*6);
+            model.addAttribute("actualNumber",randomNumber);
+
+
+
+            return"posts/rollDiceView";
+    }
+
+
 //    @GetMapping("/roll-dice") // 접속할 URL  , GetMapping 으로 연결
 //    @ResponseBody
 //    public String sayHi(){

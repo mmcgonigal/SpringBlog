@@ -30,7 +30,7 @@ public class PostController {
     }
 
 
-    @GetMapping( "/posts/create")
+    @GetMapping( "/post/create")
     public  String submit(Model model){
 
         model.addAttribute("post",new Post());
@@ -40,7 +40,7 @@ public class PostController {
     }
 
 
-    @PostMapping("/posts/create")
+    @PostMapping("/post/create")
     public String updatePost(@ModelAttribute Post post){
   postDao.save(post);
 
