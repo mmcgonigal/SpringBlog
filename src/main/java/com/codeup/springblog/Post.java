@@ -16,8 +16,9 @@ public class Post {
     @Column (nullable = false) // NOT NULL and no other customization.
     private String description;
 
-     //@OneToMany(cascade = CascadeType.ALL, mappedBy = "post") /
-    //private User owner;
+     @ManyToOne
+     @JoinColumn( name = "user_id")
+     private User user;
 
     public Post(long id, String title, String description) {
         this.id = id;
@@ -28,6 +29,14 @@ public class Post {
         this.title =title;
         this.description = description;
     }
+
+    public Post(User user, String title, String description){
+        this.user = user;
+        this.title = title;
+        this.description =description;
+    }
+
+
 public Post(){};
 
     public long getId() {

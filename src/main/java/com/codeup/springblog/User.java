@@ -1,6 +1,7 @@
 package com.codeup.springblog;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 //@Table(name="user")
@@ -14,6 +15,9 @@ public class User {
     private String password;
     @Column(nullable = false)
     private String email;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Post> posts;
 
     public User(long id, String username, String password, String email) {
         this.id = id;
