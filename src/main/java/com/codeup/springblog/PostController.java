@@ -31,14 +31,16 @@ public class PostController {
     }
 
 
-    @RequestMapping (path="/posts/{id}", method=RequestMethod.GET)
-    @ResponseBody String  indivPostView(@PathVariable int id){
+    @GetMapping (path="/posts/{id}")
+    public String  indivPostView(@PathVariable int id,Model model){
+
+
         return "Current post number : " + id + " .";
     }
 
 
     @GetMapping( "/post/create")
-    public  String submit(Model model){
+    public  String posting(Model model){
 
         model.addAttribute("post",new Post());
 
@@ -48,7 +50,7 @@ public class PostController {
 
 
     @PostMapping("/post/create")
-    public String updatePost(@ModelAttribute Post post){
+    public String addPost(@ModelAttribute Post post){
   postDao.save(post);
 
 
