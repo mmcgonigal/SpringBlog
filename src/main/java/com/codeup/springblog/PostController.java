@@ -11,16 +11,23 @@ import java.io.PrintWriter;
 public class PostController {
 
     private final PostRepository postDao;
+    private final UserRepository userDao;
 
-    public PostController(PostRepository postDao){
+    public PostController(PostRepository postDao, UserRepository userDao){
         this.postDao = postDao;
+        this.userDao = userDao;
     }
+
+
 
     @GetMapping("/post")
 
     public  String index (Model model) {
         model.addAttribute("posts", postDao.findAll());
+        model.addAttribute("users", userDao.findAll());
         return "posts/index";
+
+
     }
 
 

@@ -1,7 +1,5 @@
 package com.codeup.springblog;
 
-import com.codeup.springblog.model.User;
-
 import javax.persistence.*;
 
 @Entity
@@ -18,8 +16,8 @@ public class Post {
     @Column (nullable = false) // NOT NULL and no other customization.
     private String description;
 
-    @OneToOne
-    private User owner;
+     //@OneToMany(cascade = CascadeType.ALL, mappedBy = "post") /
+    //private User owner;
 
     public Post(long id, String title, String description) {
         this.id = id;

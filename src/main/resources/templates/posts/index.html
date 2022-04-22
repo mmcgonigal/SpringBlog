@@ -12,6 +12,7 @@
 <!--<h1> Please Guess a number from dice</h1>-->
 
 <div th:each="post : ${posts}">
+    <p th:text="${post.getId()}"></p>
     <p th:text="${post.title}" ></p>
     <p th:text="${post.description}"></p>
 </div>
