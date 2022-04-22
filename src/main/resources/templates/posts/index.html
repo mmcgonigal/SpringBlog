@@ -15,8 +15,11 @@
     <p th:text="${post.getId()}"></p>
     <p th:text="${post.title}" ></p>
     <p th:text="${post.description}"></p>
+    <a th:href="@{/post/${post.getId()}}">go to this post</a>
 </div>
 <h2><a href="/post/create">add post ?!</a></h2>
+
+
 
 <!--<a href="/doll-dice/1">1</a>-->
 <!--<a href="/doll-dice/2">2</a>-->

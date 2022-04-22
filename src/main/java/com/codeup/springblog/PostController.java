@@ -20,13 +20,15 @@ public class PostController {
 
 
 
+
     @GetMapping("/post")
 
     public  String index (Model model) {
         model.addAttribute("posts", postDao.findAll());
         model.addAttribute("users", userDao.findAll());
         return "posts/index";
-
+// ArrayList<post> allPost = (ArrayList<Post>.postDao.finaAll();
+        //model.addAttribute("allPost",allPost)
 
     }
 
@@ -35,7 +37,10 @@ public class PostController {
     public String  indivPostView(@PathVariable int id,Model model){
 
 
-        return "Current post number : " + id + " .";
+        Post post = postDao.getById((long) id);
+        model.addAttribute("singlePst",post);
+        return "posts/show";
+
     }
 
 
@@ -49,13 +54,24 @@ public class PostController {
     }
 
 
-    @PostMapping("/post/create")
+//    // this is refactored with Kenneth lecture-review
+//    @GetMapping("post/create")
+//    public String addPost(@RequestParam(name="title") String title,@RequestParam(name="description") String description) {
+//        System.out.println("title = " + title);
+//        System.out.println("description = " + description);
+//        postDao.save(new Post(title, description));
+//        return "redirect:/posts";
+//
+//    }
+
+        @PostMapping("/post/create")
     public String addPost(@ModelAttribute Post post){
   postDao.save(post);
 
 
         return "redirect:/post";
     }
+
 
 
 
