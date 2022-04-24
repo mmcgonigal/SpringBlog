@@ -23,24 +23,21 @@ public class PostController {
 
     @GetMapping("/post")
 
-    public  String index (Model model) {
+    public  String index (Model model, long id) {
         model.addAttribute("posts", postDao.findAll());
         model.addAttribute("users", userDao.findAll());
+        model.addAttribute("id",postDao.getById(id));
         return "posts/index";
 // ArrayList<post> allPost = (ArrayList<Post>.postDao.finaAll();
         //model.addAttribute("allPost",allPost)
 
     }
 
-
-    @GetMapping (path="/posts/{id}")
-    public String  indivPostView(@PathVariable int id,Model model){
-
-
-        Post post = postDao.getById((long) id);
-        model.addAttribute("singlePst",post);
+    @GetMapping (path="/post/{id}")
+    public String  indivPostView(@PathVariable long id,Model model){
+        Post post = postDao.getById(id);
+        model.addAttribute("singlePost",post);
         return "posts/show";
-
     }
 
 
@@ -54,6 +51,16 @@ public class PostController {
     }
 
 
+    @PostMapping("/post/create")
+    public String addPost(@ModelAttribute Post post){
+        postDao.save(post);
+
+
+        return "redirect:/post";
+    }
+
+
+
 //    // this is refactored with Kenneth lecture-review
 //    @GetMapping("post/create")
 //    public String addPost(@RequestParam(name="title") String title,@RequestParam(name="description") String description) {
@@ -64,13 +71,24 @@ public class PostController {
 //
 //    }
 
-        @PostMapping("/post/create")
-    public String addPost(@ModelAttribute Post post){
-  postDao.save(post);
+    @GetMapping("/post/{id}/edit")
+    public String editPost(@PathVariable long id, Model model){
+        Post post = postDao.getById(id);
 
+        model.addAttribute("post",post);
+        return "posts/edit";
 
+    }
+
+    @PostMapping("post/{id}/edit")
+    public String editAndSubmit(@PathVariable long id,@ModelAttribute Post post){
+        postDao.save(post);
         return "redirect:/post";
     }
+
+
+
+
 
 
 
