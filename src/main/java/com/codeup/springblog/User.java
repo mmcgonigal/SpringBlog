@@ -13,6 +13,15 @@ public class User {
     private String username;
     @Column(nullable = false)
     private String password;
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
     @Column(nullable = false)
     private String email;
 
