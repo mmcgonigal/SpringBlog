@@ -27,6 +27,7 @@ public class PostController {
         model.addAttribute("posts", postDao.findAll());
         model.addAttribute("users", userDao.findAll());
 
+
         return "posts/index";
 // ArrayList<post> allPost = (ArrayList<Post>.postDao.finaAll();
         //model.addAttribute("allPost",allPost)
