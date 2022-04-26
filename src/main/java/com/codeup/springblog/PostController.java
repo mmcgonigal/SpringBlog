@@ -1,7 +1,7 @@
 package com.codeup.springblog;
 
 
-import com.codeup.Services.EmailService;
+import com.codeup.springblog.Services.EmailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -55,7 +55,14 @@ public class PostController {
 
     @PostMapping("/post/create")
     public String addPost(@ModelAttribute Post post){
+
+        User user= userDao.getById(4L);  // find one user  to hard set for posting for now because it comes as null if i dont assign any user,
+        post.setUser(user); // <-- this will be setting     user for post.
+
+
         postDao.save(post);
+
+        emailService.prepareAndSend(post,post.getTitle(),post.getDescription());
 
 
         return "redirect:/post";
