@@ -14,6 +14,7 @@
     <p th:text="${singlePost.description}"></p>
     <a th:href="@{'/post/{id}/edit'(id=${singlePost.id})}">go to edit this post</a>
     <a th:href="@{'/post/{id}'(id= ${singlePost.id})}">go to this post</a>
+    <a th:href="@{'/post/{id}/delete'(id=${singlePost.id})}">Delete this post</a>
 
 </div>
 </body>

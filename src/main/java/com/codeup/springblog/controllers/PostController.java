@@ -33,11 +33,9 @@ public class PostController {
         model.addAttribute("posts", postDao.findAll());
         model.addAttribute("users", userDao.findAll());
 
-
         return "posts/index";
 // ArrayList<post> allPost = (ArrayList<Post>.postDao.finaAll();
         //model.addAttribute("allPost",allPost)
-
     }
 
     @GetMapping (path="/post/{id}")
@@ -71,9 +69,17 @@ public class PostController {
 
         postDao.save(post);
 
+
         emailService.prepareAndSend(post,post.getTitle(),post.getDescription());
 
 
+        return "redirect:/post";
+    }
+
+    @GetMapping ("/post/{id}/delete")
+    public String deletePost(@PathVariable long id,Model model){
+        Post post = postDao.getById(id);
+        postDao.delete(post);
         return "redirect:/post";
     }
 
