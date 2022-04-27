@@ -6,6 +6,7 @@ import com.codeup.springblog.repositories.PostRepository;
 import com.codeup.springblog.Services.EmailService;
 import com.codeup.springblog.model.User;
 import com.codeup.springblog.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -60,7 +61,11 @@ public class PostController {
     @PostMapping("/post/create")
     public String addPost(@ModelAttribute Post post){
 
-        User user= userDao.getById(4L);  // find one user  to hard set for posting for now because it comes as null if i dont assign any user,
+//        User user= userDao.getById();
+        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal(); // give in log in user instance but has to be forced in to (User) to fit in to User .
+
+
+        // find one user  to hard set for posting for now because it comes as null if i dont assign any user,
         post.setUser(user); // <-- this will be setting     user for post.
 
 
